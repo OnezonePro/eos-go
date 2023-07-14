@@ -449,6 +449,12 @@ func (sc SymbolCode) MarshalJSON() (data []byte, err error) {
 // here just to speed up things.
 var EOSSymbol = Symbol{Precision: 4, Symbol: "EOS"}
 
+// AMAXSymbol represents the standard AMAX symbol on the chain
+var AMAXSymbol = Symbol{Precision: 8, Symbol: "AMAX"}
+
+// MUSDTSymbol represents the standard MUSDT symbol on the chain
+var MUSDTSymbol = Symbol{Precision: 6, Symbol: "MUSDT"}
+
 // REXSymbol represents the standard REX symbol on the chain.  It's
 // here just to speed up things.
 var REXSymbol = Symbol{Precision: 4, Symbol: "REX"}
@@ -460,6 +466,10 @@ var TNTSymbol = Symbol{Precision: 4, Symbol: "TNT"}
 
 func NewEOSAsset(amount int64) Asset {
 	return Asset{Amount: Int64(amount), Symbol: EOSSymbol}
+}
+
+func NewAMAXAsset(amount int64) Asset {
+	return Asset{Amount: Int64(amount), Symbol: AMAXSymbol}
 }
 
 // NewAsset reads from a string an EOS asset.
@@ -488,6 +498,10 @@ func NewAssetFromString(in string) (out Asset, err error) {
 
 func NewEOSAssetFromString(input string) (Asset, error) {
 	return NewFixedSymbolAssetFromString(EOSSymbol, input)
+}
+
+func NewAMAXAssetFromString(input string) (Asset, error) {
+	return NewFixedSymbolAssetFromString(AMAXSymbol, input)
 }
 
 func NewREXAssetFromString(input string) (Asset, error) {
